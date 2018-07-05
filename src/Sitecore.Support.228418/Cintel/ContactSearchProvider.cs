@@ -63,14 +63,14 @@ namespace Sitecore.Support.Cintel
                     var personalInfo = sr.GetFacet<PersonalInformation>(PersonalInformation.DefaultFacetKey);
                     var emailInfo = sr.GetFacet<EmailAddressList>(EmailAddressList.DefaultFacetKey);
 
-                    var interaction = sr.Interactions.FirstOrDefault();
+                    var interaction = sr.Interactions.LastOrDefault(); 
 
-          IEnumerable<Interaction> filteredInteractions = sr.Interactions;
+                    IEnumerable<Interaction> filteredInteractions = sr.Interactions;
                     if (filteredInteractions.Count() >= 0)
                     {
                         filteredInteractions = ApplyDeviceFilter(filteredInteractions, deviceFilters);
-                        interaction = filteredInteractions.FirstOrDefault();
-          }
+                        interaction = filteredInteractions.LastOrDefault();
+                    }
                     else
                         interaction = null;
 
